@@ -10,14 +10,18 @@ locals {
   s3_artifact_bucket_name          = "launchpadlambdafunctions"
   s3_failover_artifact_bucket_name = "launchpadfailoverfunctions"
 }
-
 module "vpc_ig" {
   source       = "./modules/vpc_ig"
   cidr_block   = "10.0.0.0/16"
   vpc_name     = tomap({ Name = "VPC-DEV" })
   gateway_tags = tomap({ Name = "IGW-DEV" })
 }
-
+module "vpc_ig_prod" {
+  source       = "./modules/vpc_ig"
+  cidr_block   = "10.0.0.0/16"
+  vpc_name     = tomap({ Name = "VPC-PROD" })
+  gateway_tags = tomap({ Name = "IGW-PROD" })
+}
 module "create_public_subnets" {
   source            = "./modules/subnet"
   vpc_id            = module.vpc_ig.vpc_id
@@ -36,7 +40,6 @@ module "create_private_subnets" {
   cidr_block        = each.value.cidr_block
   availability_zone = each.value.availability_zone
 }
-
 module "create_nat_gateways" {
   source           = "./modules/nat"
   for_each         = module.create_public_subnets
@@ -44,7 +47,6 @@ module "create_nat_gateways" {
   subnet_id        = each.value.subnet.id
   nat_gateway_name = "GW_${each.value.subnet.id}"
 }
-
 module "create_public_route_tables" {
   source = "./modules/route_tables"
 
@@ -54,7 +56,6 @@ module "create_public_route_tables" {
   gateway_id       = module.vpc_ig.gateway_id
   nat_gateway_id   = null
 }
-
 module "create_private_route_tables" {
   source = "./modules/route_tables"
   depends_on = [
