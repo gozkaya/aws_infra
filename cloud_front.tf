@@ -104,7 +104,7 @@
 #   }
 #   source                         = "./modules/cloud_front"
 #   cloud_front_custom_domain_name = local.cloud_front_domain
-#   cloud_front_certificate_arn    = "arn:aws:acm:eu-west-1:743491303331:certificate/33a2a3c4-f3b0-47e9-8b07-b112f4fc5f00"
+#   cloud_front_certificate_arn    = "arn:aws:acm:us-east-1:743491303331:certificate/33a2a3c4-f3b0-47e9-8b07-b112f4fc5f00"
 #   cloud_front_target             = local.load_balancer_dns_name
 #   cloud_front_log_bucket         = local.log_bucket
 #   # web_acl_id                     = module.create_waf_cloud_front.waf_acl_arn[0]

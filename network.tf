@@ -18,7 +18,7 @@ module "vpc_ig" {
 }
 module "vpc_ig_prod" {
   source       = "./modules/vpc_ig"
-  cidr_block   = "10.0.0.0/16"
+  cidr_block   = "10.1.0.0/16"
   vpc_name     = tomap({ Name = "VPC-PROD" })
   gateway_tags = tomap({ Name = "IGW-PROD" })
 }
