@@ -1,5 +1,5 @@
 locals {
-  key_pair_name          = "AppServerA"
+  key_pair_name = "AppServerA"
 }
 data "aws_ami" "amazon_linux_2" {
   most_recent = true

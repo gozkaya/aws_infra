@@ -1,5 +1,5 @@
 locals {
-  private_route_tables             = ["PrivateRouteTableA", "PrivateRouteTableB"]
+  private_route_tables = ["PrivateRouteTableA", "PrivateRouteTableB"]
 }
 module "create_public_route_tables" {
   source = "./modules/route_tables"

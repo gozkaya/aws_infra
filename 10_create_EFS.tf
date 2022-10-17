@@ -1,5 +1,5 @@
 locals {
-  efs_dns_name           = local.failover ? data.aws_efs_file_system.replica[0].dns_name : module.create_efs_drive.efs_dns_name
+  efs_dns_name = local.failover ? data.aws_efs_file_system.replica[0].dns_name : module.create_efs_drive.efs_dns_name
 }
 module "create_efs_drive" {
   source          = "./modules/efs"

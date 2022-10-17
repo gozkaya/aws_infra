@@ -1,8 +1,8 @@
 locals {
-  enviroment   = terraform.workspace
-  name_sufix   = local.enviroment == "default" ? "" : "-${local.enviroment}"
-  region       = terraform.workspace == "failover" ? "us-east-1" : "eu-west-1"
-  failover     = terraform.workspace == "failover" ? true : false
+  enviroment = terraform.workspace
+  name_sufix = local.enviroment == "default" ? "" : "-${local.enviroment}"
+  region     = terraform.workspace == "failover" ? "us-east-1" : "eu-west-1"
+  failover   = terraform.workspace == "failover" ? true : false
 }
 module "vpc_ig" {
   source       = "./modules/vpc_ig"

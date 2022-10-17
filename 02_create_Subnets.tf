@@ -1,6 +1,6 @@
 locals {
-  exported_private_subnets         = [for private_subnet in module.create_private_subnets : private_subnet]
-  exported_public_subnets          = [for public_subnet in module.create_public_subnets : public_subnet]
+  exported_private_subnets = [for private_subnet in module.create_private_subnets : private_subnet]
+  exported_public_subnets  = [for public_subnet in module.create_public_subnets : public_subnet]
 }
 module "create_public_subnets" {
   source            = "./modules/subnet"

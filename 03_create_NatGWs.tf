@@ -1,5 +1,5 @@
 locals {
-  exported_nat_gateways            = [for nat_gateway in module.create_nat_gateways : nat_gateway]
+  exported_nat_gateways = [for nat_gateway in module.create_nat_gateways : nat_gateway]
 }
 module "create_nat_gateways" {
   source           = "./modules/natgw"
