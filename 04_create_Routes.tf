@@ -3,7 +3,7 @@ locals {
   cidr_block_out       = "0.0.0.0/0"
 }
 module "create_public_route_tables" {
-  source = "./modules/route_tables"
+  source = "./modules/ROUTE_TABLES"
 
   vpc_id           = module.vpc_dev.vpc_id
   route_table_name = "PublicRouteTable"
@@ -12,7 +12,7 @@ module "create_public_route_tables" {
   nat_gateway_id   = null
 }
 module "create_private_route_tables" {
-  source = "./modules/route_tables"
+  source = "./modules/ROUTE_TABLES"
   depends_on = [
     module.create_nat_gateways
   ]
@@ -24,13 +24,13 @@ module "create_private_route_tables" {
   nat_gateway_id   = local.exported_nat_gateways[count.index].nat_gateways.id
 }
 module "create_public_route_table_associations" {
-  source         = "./modules/route_assoc"
+  source         = "./modules/ROUTE_ASSOC"
   for_each       = module.create_public_subnets
   subnet_id      = each.value.subnet.id
   route_table_id = module.create_public_route_tables.route_tables.id
 }
 module "create_private_route_table_associations" {
-  source         = "./modules/route_assoc"
+  source         = "./modules/ROUTE_ASSOC"
   count          = length(local.exported_private_subnets)
   subnet_id      = local.exported_private_subnets[count.index].subnet.id
   route_table_id = module.create_private_route_tables[count.index].route_tables.id

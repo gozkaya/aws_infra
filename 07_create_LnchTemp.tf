@@ -11,7 +11,7 @@ data "aws_ami" "amazon_linux_2" {
   }
 }
 module "create_launch_template" {
-  source = "./modules/launch_temp"
+  source = "./modules/LAUNCH_TEMP"
   depends_on = [
     data.aws_ami.amazon_linux_2, module.create_efs_drive
   ]

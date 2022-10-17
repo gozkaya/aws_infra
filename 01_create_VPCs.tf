@@ -11,13 +11,13 @@ locals {
   cidr_block_prod = "10.1.0.0/16"
 }
 module "vpc_dev" {
-  source       = "./modules/vpc_ig"
+  source       = "./modules/VPC_IGW"
   cidr_block   = local.cidr_block_dev
   vpc_name     = tomap({ Name = local.vpc_name_dev })
   gateway_tags = tomap({ Name = local.igw_name_dev })
 }
 module "vpc_prod" {
-  source       = "./modules/vpc_ig"
+  source       = "./modules/VPC_IGW"
   cidr_block   = local.cidr_block_prod
   vpc_name     = tomap({ Name = local.vpc_name_prod })
   gateway_tags = tomap({ Name = local.igw_name_prod })

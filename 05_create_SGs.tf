@@ -4,7 +4,7 @@ locals {
   app_security_group_id = module.SecurityGroup.ids_map["WebAppInstanceSecurityGroup${local.name_sufix}"].id
 }
 module "SecurityGroup" {
-  source = "./modules/sg"
+  source = "./modules/SG"
   security_group_sets = {
     "WebAppInstanceSecurityGroup${local.name_sufix}" = {
       vpc_id = local.vpc_id

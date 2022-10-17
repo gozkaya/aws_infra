@@ -3,7 +3,7 @@ locals {
   load_balancer_dns_name = module.create_load_balancer.load_balancer_dns_name
 }
 module "create_load_balancer" {
-  source = "./modules/elb"
+  source = "./modules/ELB"
 
   name               = "LoadBalancerApplication${local.name_sufix}"
   load_balancer_type = "application"
