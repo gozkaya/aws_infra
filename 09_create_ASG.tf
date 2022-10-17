@@ -1,5 +1,5 @@
 module "create_auto_scaling_group" {
-  source                    = "./modules/asg"
+  source                    = "./modules/ASG"
   name                      = "AutoScalingGroup${local.name_sufix}"
   availability_zones        = ["${local.region}a", "${local.region}b"]
   default_instance_warmup   = "0"

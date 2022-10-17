@@ -2,7 +2,7 @@ locals {
   efs_dns_name = local.failover ? data.aws_efs_file_system.replica[0].dns_name : module.create_efs_drive.efs_dns_name
 }
 module "create_efs_drive" {
-  source          = "./modules/efs"
+  source          = "./modules/EFS"
   name            = "efs${local.name_sufix}"
   encrypted       = true
   private_subnets = tolist(local.exported_private_subnets)

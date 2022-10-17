@@ -1,5 +1,5 @@
 module "create_target_group" {
-  source      = "./modules/target_group"
+  source      = "./modules/TARGET_GROUP"
   name        = "TargetGroupApplication${local.name_sufix}"
   port        = "80"
   protocol    = "HTTP"
