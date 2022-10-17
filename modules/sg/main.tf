@@ -1,7 +1,6 @@
 resource "aws_security_group" "security_group" {
   for_each = var.security_group_sets
 
-
   name                   = each.key
   vpc_id                 = lookup(each.value, "vpc_id", null)
   revoke_rules_on_delete = lookup(each.value, "revoke_rules_on_delete", false)
@@ -29,5 +28,4 @@ resource "aws_security_group" "security_group" {
       self            = lookup(egress.value, "self", null)
     }
   }
-
 }

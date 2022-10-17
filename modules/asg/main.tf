@@ -20,8 +20,6 @@ resource "aws_autoscaling_group" "main" {
 
   name                    = var.name
   service_linked_role_arn = "arn:aws:iam::405241045532:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling"
-  # service_linked_role_arn = "arn:aws:iam::312812643817:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling"
-
   target_group_arns       = [var.target_group_arn]
   vpc_zone_identifier     = [var.subnets[0].subnet.id, var.subnets[1].subnet.id]
 

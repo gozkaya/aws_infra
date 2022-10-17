@@ -1,4 +1,3 @@
-
 variable "attach_to_vpc" {
   type        = bool
   description = "Attach the NAT gateway to the VPC"

@@ -3,10 +3,6 @@ variable "vpc_id" {
 }
 # variable "tables" {
 # }
-
-
-
-
 variable "route_table_name" {
   type = string
 }
