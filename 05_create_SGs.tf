@@ -1,11 +1,10 @@
 locals {
-
   vpc_id                = module.vpc_ig.vpc_id
   efs_security_group_id = module.SecurityGroup.ids_map["EFSMountTargetSecurityGroup${local.name_sufix}"].id
   app_security_group_id = module.SecurityGroup.ids_map["WebAppInstanceSecurityGroup${local.name_sufix}"].id
 }
 module "SecurityGroup" {
-  source = "./modules/security_group"
+  source = "./modules/sg"
   security_group_sets = {
     "WebAppInstanceSecurityGroup${local.name_sufix}" = {
       vpc_id = local.vpc_id
@@ -26,7 +25,6 @@ module "SecurityGroup" {
           to_port     = "80"
         }
       ]
-
       egress = [
         {
           cidr_blocks = ["0.0.0.0/0"]
@@ -48,7 +46,6 @@ module "SecurityGroup" {
           to_port     = "2049"
         },
       ]
-
       egress = [
         {
           cidr_blocks = ["0.0.0.0/0"]
@@ -61,7 +58,6 @@ module "SecurityGroup" {
     },
   }
 }
-
 resource "aws_security_group_rule" "example" {
   depends_on = [
     module.SecurityGroup
