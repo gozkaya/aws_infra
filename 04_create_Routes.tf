@@ -5,10 +5,10 @@ locals {
 module "create_public_route_tables" {
   source = "./modules/route_tables"
 
-  vpc_id           = module.vpc_ig.vpc_id
+  vpc_id           = module.vpc_dev.vpc_id
   route_table_name = "PublicRouteTable"
   cidr_block       = local.cidr_block_out
-  gateway_id       = module.vpc_ig.gateway_id
+  gateway_id       = module.vpc_dev.gateway_id
   nat_gateway_id   = null
 }
 module "create_private_route_tables" {
@@ -17,7 +17,7 @@ module "create_private_route_tables" {
     module.create_nat_gateways
   ]
   count            = length(local.private_route_tables)
-  vpc_id           = module.vpc_ig.vpc_id
+  vpc_id           = module.vpc_dev.vpc_id
   route_table_name = local.private_route_tables[count.index]
   cidr_block       = local.cidr_block_out
   gateway_id       = null

@@ -1,5 +1,5 @@
 locals {
-  vpc_id                = module.vpc_ig.vpc_id
+  vpc_id                = module.vpc_dev.vpc_id
   efs_security_group_id = module.SecurityGroup.ids_map["EFSMountTargetSecurityGroup${local.name_sufix}"].id
   app_security_group_id = module.SecurityGroup.ids_map["WebAppInstanceSecurityGroup${local.name_sufix}"].id
 }

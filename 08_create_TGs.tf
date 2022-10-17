@@ -6,5 +6,5 @@ module "create_target_group" {
   path        = "/index.php"
   target_type = "instance"
   target_id   = local.load_balancer_arn
-  vpc_id      = module.vpc_ig.vpc_id
+  vpc_id      = module.vpc_dev.vpc_id
 }
